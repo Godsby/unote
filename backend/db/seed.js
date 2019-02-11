@@ -20,7 +20,8 @@ for (let i = 0; i < 50; i++) {
    let title = faker.lorem.sentence();
    let body = faker.lorem.paragraphs();
    let user_id = Math.floor(Math.random() * 20 + 1);
-   let str = `('${title}', '${body}', ${user_id})`;
+   let noteBook_id = Math.floor(Math.random() * 10 + 1);
+   let str = `('${title}', '${body}', ${user_id}, ${noteBook_id})`;
    notes.push(str);
 }
 // console.log('Notes', notes);
@@ -30,21 +31,19 @@ let noteBooks = [];
 for (let i = 0; i < 10; i++) {
    let bookName = faker.random.words();
    let user_id = Math.floor(Math.random() * 20 + 1);
-   let note_id = Math.floor(Math.random() * 50 + 1);
-   let str = `('${bookName}', ${user_id}, ${note_id})`;
+   let str = `('${bookName}', ${user_id})`;
    noteBooks.push(str);
 }
 
-// console.log('Notebooks', notebooks);
+// console.log('Notebooks', noteBooks);
 
 
 let noteTags = [];
 
 for (let i = 0; i < 20; i++) {
    let tagName = faker.random.word();
-   let user_id = Math.floor(Math.random() * 20 + 1);
    let note_id = Math.floor(Math.random() * 50 + 1);
-   let str = `('${tagName}', ${user_id}, ${note_id})`;
+   let str = `('${tagName}', ${note_id})`;
    noteTags.push(str);
 }
 
@@ -58,11 +57,11 @@ noteTags = noteTags.join(', ');
 
 db.none('INSERT INTO users(email, passcode) VALUES ' + users + ';')
    .then(() => {
-      db.none('INSERT INTO notes(title, body, user_id) VALUES ' + notes + ';')
+      db.none('INSERT INTO noteBooks(bookName, user_id) VALUES ' + noteBooks + ';')
          .then(() => {
-            db.none('INSERT INTO noteBooks(bookName, user_id, note_id) VALUES ' + noteBooks + ';')
+            db.none('INSERT INTO notes(title, body, user_id, noteBook_id) VALUES ' + notes + ';')
                .then(() => {
-                  db.none('INSERT INTO noteTags(tagName, user_id, note_id) VALUES ' + noteTags + ';')
+                  db.none('INSERT INTO noteTags(tagName, note_id) VALUES ' + noteTags + ';')
                })
          })
    })
