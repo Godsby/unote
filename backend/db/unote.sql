@@ -14,19 +14,19 @@ CREATE TABLE notes (
    id SERIAL PRIMARY KEY,
    title TEXT NOT NULL,
    body TEXT NOT NULL,
-   user_id INT NOT NULL REFERENCES users(id)
+   user_id INT REFERENCES users(id)
 );
 
-CREATE TABLE notebooks (
+CREATE TABLE noteBooks (
    id SERIAL PRIMARY KEY,
    bookName VARCHAR NOT NULL,
-   note_id INT NOT NULL REFERENCES notes(id),
-   user_id INT NOT NULL REFERENCES users(id)
+   note_id INT REFERENCES notes(id),
+   user_id INT REFERENCES users(id)
 );
 
 CREATE TABLE noteTags (
    id SERIAL PRIMARY KEY,
    tagName VARCHAR NOT NULL,
-   note_id INT NOT NULL REFERENCES notes(id),
-   user_id INT NOT NULL REFERENCES users(id)
+   note_id INT REFERENCES notes(id),
+   user_id INT REFERENCES users(id)
 );
