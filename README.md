@@ -6,40 +6,34 @@ Minimum Viable Product
 
 My project is a web application inspired by evernote and built using Express and React/Redux. By the end of Week 4, this app will, at a minimum, satisfy the following criteria with smooth, bug-free navigation, adequate seed data and sufficient CSS styling:
 
-- [ ] New User Creation & Login
-- [ ] Note
+### New User Creation & Login
+### Note
    - [ ] Create note
    - [ ] Edit note
    - [ ] Share note
    - [ ] Delete note
    - [ ] Add a note to noteBook
    - [ ] Remove a note from noteBook
-- [ ] noteBook
+### noteBook
    - [ ] Create noteBook
    - [ ] Edit noteBook
    - [ ] Share noteBook
    - [ ] Delete noteBook
    - [ ] View all notes by noteBook
-- [ ] noteTag
+### noteTag
    - [ ] Create noteTag
    - [ ] Delete noteTag
    - [ ] View all notes by noteTag
-- [ ] Bonus: login Demo
-- [ ] Bonus: Search note by keywords
+### Bonus: 
+- [ ] login Demo
+- [ ] Search note by keywords
 
 ## Design Docs
-* [View Wireframes][wireframes]
-* [React Components][components]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
-* [Sample State][sample-state]
-
-[wireframes](./wireframes/mainpage.png)
-[components](component-structure.md)
-[sample-state](sample-state.md)
-[api-endpoints](api-endpoints.md)
-[schema](schema.md)
-
+* [View Wireframes](./backend/docs/wireframes/mainpage.png)
+* [React Components](./backend/docs/component-structure.md)
+* [API endpoints](./backend/docs/api-endpoints.md)
+* [DB schema](./backend/docs/schema.md)
+* [Sample State](./backend/docs/sample-state.md)
 
 ## Implementation Timeline
 
