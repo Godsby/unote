@@ -1,11 +1,11 @@
 const { db } = require('../index');
 
 const getAllNB = (req, res, next) => {
-   db.any('SELECT * FROM notebooks')
-   .then(notebooks => {
+   db.any('SELECT * FROM noteBooks')
+   .then(noteBooks => {
       res.status(200).json({
          status: 'success',
-         notebooks: notebooks,
+         noteBooks: noteBooks,
          message: 'Receive All NoteBooks!'
       })
    })
@@ -13,7 +13,7 @@ const getAllNB = (req, res, next) => {
 }
 
 const createNB = (req, res, next) => {
-   db.none('INSERT INTO notebooks(bookName, user_id) VALUES(${bookName}, ${user_id})', req.body)
+   db.none('INSERT INTO noteBooks(bookName, user_id) VALUES(${bookName}, ${user_id})', req.body)
    .then(() => {
       res.status(200).json({
          status: 'success',
@@ -26,11 +26,11 @@ const createNB = (req, res, next) => {
 const editNB = (req, res, next) => {
    let queryString = '';
    if (req.body.bookName && req.body.user_id) {
-      queryString += 'UPDATE notebooks SET bookName = ${bookName}, user_id = ${user_id} WHERE id = ${id}'
+      queryString += 'UPDATE noteBooks SET bookName = ${bookName}, user_id = ${user_id} WHERE id = ${id}'
    } else if (req.body.bookName) {
-      queryString += 'UPDATE notebooks SET bookName = ${bookName} WHERE id = ${id}'
+      queryString += 'UPDATE noteBooks SET bookName = ${bookName} WHERE id = ${id}'
    } else {
-      queryString += 'UPDATE notebooks SET user_id = ${user_id} WHERE id = ${id}'
+      queryString += 'UPDATE noteBooks SET user_id = ${user_id} WHERE id = ${id}'
    }
    db.none(queryString, {
       bookName: req.body.bookName,
@@ -48,7 +48,7 @@ const editNB = (req, res, next) => {
 
 const deleteNB = (req, res, next) => {
    let notebook_id = parseInt(req.params.id);
-   db.none('DELETE FROM notebooks WHERE id = $1', notebook_id)
+   db.none('DELETE FROM noteBooks WHERE id = $1', notebook_id)
    .then(() => {
       res.status(200).json({
          status: 'success',
@@ -59,8 +59,8 @@ const deleteNB = (req, res, next) => {
 }
 
 const getAllNotesForNoteBook = (req, res, next) => {
-   let notebook_id = parseInt(req.params.id);
-   db.any('SELECT * FROM notes WHERE noteBook_id = $1', notebook_id)
+   let noteBook_id = parseInt(req.params.id);
+   db.any('SELECT * FROM notes WHERE noteBook_id = $1', noteBook_id)
    .then(notes => {
       res.status(200).json({
          status: 'success',

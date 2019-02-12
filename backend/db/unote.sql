@@ -4,27 +4,27 @@ CREATE DATABASE unote;
 \c unote;
 
 CREATE TABLE users (
-   id SERIAL PRIMARY KEY,
+   user_id SERIAL PRIMARY KEY,
    email VARCHAR NOT NULL,
    passcode VARCHAR NOT NULL 
 );
 
 CREATE TABLE noteBooks (
-   id SERIAL PRIMARY KEY,
+   noteBook_id SERIAL PRIMARY KEY,
    bookName VARCHAR NOT NULL,
-   user_id INT REFERENCES users(id)
-);
-
-CREATE TABLE notes (
-   id SERIAL PRIMARY KEY,
-   title TEXT NOT NULL,
-   body TEXT NOT NULL,
-   user_id INT REFERENCES users(id),
-   noteBook_id INT REFERENCES noteBooks(id)
+   user_id INT REFERENCES users(user_id)
 );
 
 CREATE TABLE noteTags (
-   id SERIAL PRIMARY KEY,
-   tagName VARCHAR NOT NULL,
-   note_id INT REFERENCES notes(id)
+   noteTag_id SERIAL PRIMARY KEY,
+   tagName VARCHAR NOT NULL
+);
+
+CREATE TABLE notes (
+   note_id SERIAL PRIMARY KEY,
+   title TEXT NOT NULL,
+   body TEXT NOT NULL,
+   user_id INT REFERENCES users(user_id),
+   noteBook_id INT REFERENCES noteBooks(noteBook_id),
+   noteTag_id INT REFERENCES noteTags(noteTag_id)
 );

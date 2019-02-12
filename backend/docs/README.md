@@ -7,20 +7,23 @@ Minimum Viable Product
 My project is a web application inspired by evernote and built using Express and React/Redux. By the end of Week 4, this app will, at a minimum, satisfy the following criteria with smooth, bug-free navigation, adequate seed data and sufficient CSS styling:
 
 - [ ] New User Creation & Login
-- [ ] Create note
-- [ ] Edit note
-- [ ] Share note
-- [ ] Delete note
-- [ ] Create noteBook
-- [ ] Edit noteBook
-- [ ] Share noteBook
-- [ ] Delete noteBook
-- [ ] View all notes by noteBook
-- [ ] Add a note to noteBook
-- [ ] Remove a note from noteBook
-- [ ] Create noteTag
-- [ ] Delete noteTag
-- [ ] View all notes by noteTag
+- [ ] Note
+   - [ ] Create note
+   - [ ] Edit note
+   - [ ] Share note
+   - [ ] Delete note
+   - [ ] Add a note to noteBook
+   - [ ] Remove a note from noteBook
+- [ ] noteBook
+   - [ ] Create noteBook
+   - [ ] Edit noteBook
+   - [ ] Share noteBook
+   - [ ] Delete noteBook
+   - [ ] View all notes by noteBook
+- [ ] noteTag
+   - [ ] Create noteTag
+   - [ ] Delete noteTag
+   - [ ] View all notes by noteTag
 - [ ] Bonus: login Demo
 - [ ] Bonus: Search note by keywords
 
@@ -31,11 +34,11 @@ My project is a web application inspired by evernote and built using Express and
 * [DB schema][schema]
 * [Sample State][sample-state]
 
-[wireframes]: docs/wireframes
-[components]: docs/component-structure.md
-[sample-state]: docs/sample-state.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
+[wireframes](./wireframes/mainpage.png)
+[components](component-structure.md)
+[sample-state](sample-state.md)
+[api-endpoints](api-endpoints.md)
+[schema](schema.md)
 
 
 ## Implementation Timeline

@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-const { getAllNB, createNB, editNB, deleteNB, getAllNotesForNoteBook } = require('../db/queries/notebooksQ');
+const { getAllNB, createNB, editNB, deleteNB, getAllNotesForNoteBook } = require('../db/queries/noteBooksQ');
 
 router.get('/', getAllNB);
 router.post('/', createNB);
