@@ -1,9 +1,9 @@
 # Component Structure
 
-##App##
+##App
 * Root component
 
-###Homepage###
+###Homepage
 * AuthNavBar
 * Logo
 
@@ -11,7 +11,7 @@
 * AuthForm(Login or Signup)
 * AuthNavBar
 
-###Mainpage###
+###Mainpage
 * Sidebar
 * NoteEditor
 
