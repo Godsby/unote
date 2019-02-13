@@ -8,22 +8,22 @@ My project is a web application inspired by evernote and built using Express and
 
 ### New User Creation & Login
 ### Note
-   - [ ] Create note
-   - [ ] Edit note
-   - [ ] Share note
-   - [ ] Delete note
-   - [ ] Add a note to noteBook
-   - [ ] Remove a note from noteBook
+- [ ] Create note
+- [ ] Edit note
+- [ ] Share note
+- [ ] Delete note
+- [ ] Add a note to noteBook
+- [ ] Remove a note from noteBook
 ### noteBook
-   - [ ] Create noteBook
-   - [ ] Edit noteBook
-   - [ ] Share noteBook
-   - [ ] Delete noteBook
-   - [ ] View all notes by noteBook
+- [ ] Create noteBook
+- [ ] Edit noteBook
+- [ ] Share noteBook
+- [ ] Delete noteBook
+- [ ] View all notes by noteBook
 ### noteTag
-   - [ ] Create noteTag
-   - [ ] Delete noteTag
-   - [ ] View all notes by noteTag
+- [ ] Create noteTag
+- [ ] Delete noteTag
+- [ ] View all notes by noteTag
 ### Bonus: 
 - [ ] login Demo
 - [ ] Search note by keywords
