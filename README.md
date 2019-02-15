@@ -29,11 +29,11 @@ My project is a web application inspired by evernote and built using Express and
 - [ ] Search note by keywords
 
 ## Design Docs
-* [View Wireframes](./backend/docs/wireframes/mainpage.png)
-* [React Components](./backend/docs/component-structure.md)
-* [API endpoints](./backend/docs/api-endpoints.md)
-* [DB schema](./backend/docs/schema.md)
-* [Sample State](./backend/docs/sample-state.md)
+* [View Wireframes](./docs/wireframes)
+* [React Components](./docs/component-structure.md)
+* [API endpoints](./docs/api-endpoints.md)
+* [DB schema](./docs/schema.md)
+* [Sample State](./docs/sample-state.md)
 
 ## Implementation Timeline
 
