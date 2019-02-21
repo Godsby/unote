@@ -4,28 +4,38 @@
 * Root component
 
 ## Homepage
-* AuthNavBar
-* Logo
+* Landing
+* Narbar
 
-**AuthFormContainer**
-* AuthForm(Login or Signup)
-* AuthNavBar
+**Auth**
+* Auth
+* Login
+* Signup
 
 ## Mainpage
 * Sidebar
-* NoteEditor
+* Editor
+* NoteList
 
-**SidebarContainer**
-* Search Bar
-* NotesList
-* NoteBooksList
-* NoteTagsList
+**Sidebar**
+* UserProfile
+* Search
+* AddNote
+* NotesLinks
+* NoteBooksLinks
+* NoteTagsLinks
+* TrashLinks
 
-**NoteeditorContainer**
-* Tool Bar
-* Note Title
-* Note Body
-* Notetag Footer
+**Summary**
+* AllNotes
+* NoteBook
+* Trash
+
+**Editor**
+* ToolBar
+* NoteTitle
+* NoteBody
+* NotetagFooter
 
 
 # Routes
@@ -33,9 +43,10 @@
 | **Path**  | **Component** |
 | ------------- | ------------- |
 | '/'  | 'Homepage'  |
-| '/sign-up'  | 'AuthFormContainer'  |
-| '/log-in'  | 'AuthFormContainer'  |
+| '/auth'  | 'AuthContainer'  |
+| '/auth/signup'  | 'Signup'  |
+| '/auth/login'  | 'Login'  |
 | '/notes'  | 'NotesList'  |
 | '/notesbooks'  | 'NoteBooksList'  |
 | '/notetags'  | 'NoteTagsList'  |
-| '/notes/:note_id'  | 'NoteeditorContainer'  |
+| '/notes/:note_id'  | 'EditorContainer'  |
