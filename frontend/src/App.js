@@ -3,8 +3,11 @@ import './App.css';
 import axios from 'axios';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Landing from './components/Homepage/Landing';
-import Auth from './components/Auth/Auth';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
 import Main from './components/Mainpage/Main';
+import CreateNote from './components/Mainpage/CreateNote';
+import AuthContainer from './components/Auth/AuthContainer';
 
 
 class App extends Component {
@@ -38,9 +41,10 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <div className="App">
-            <Route exact path = '/' component= {Landing} />
-            <Route path = '/auth' component= {Auth} />
-            <Route exact path = '/main' component= {Main} />
+            <Route exact path='/' component={ Landing } />
+            <Route path='/auth' component={ AuthContainer } />
+            <Route exact path='/main' component={ Main } />
+            <Route path='/new' component={ CreateNote } />
           </div>
 
         </Switch>

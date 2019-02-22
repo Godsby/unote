@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import logo from '../../components/Unote-logo.png';
 import LoginLink from '../Homepage/LoginLink';
 import LogoutLink from '../Homepage/LogoutLink'

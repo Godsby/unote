@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 import Editor from './Editor';
-import NoteList from './Notes/NoteList';
+import NoteList from './NoteList';
 
 
 const Main = () => {

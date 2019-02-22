@@ -26,10 +26,8 @@
 * NoteTagsLinks
 * TrashLinks
 
-**Summary**
+**NoteList**
 * AllNotes
-* NoteBook
-* Trash
 
 **Editor**
 * ToolBar

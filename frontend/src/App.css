@@ -1,5 +1,8 @@
 .App {
-  text-align: center
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
 }
 
 .nav-wrapper {
@@ -13,18 +16,85 @@
 }
 
 .landing-content {
-  /* display: flex; */
-  
-  margin: 0 0 0 0;
-  max-width: 1220px;
+  display: inline-flex;
+  margin: 0 0;
   background-color: #0099FF;
-  height: 950px;
+  font-family: Helvetica,Arial,sans-serif;
+  height: 617px;
+  box-sizing: border-box;
+}
+
+.leftside {
+  padding: 70px 30px 0 40px;
+}
+
+.leftside h1 {
+  font-size: 56px;
+  line-height: 72px;
+  margin-bottom: 20px;
+}
+
+.leftside p {
+  font-size: 24px;
+  line-height: 40px;
+  margin-bottom: 35px;
+}
+
+.leftside button {
+  width: 240px;
+  height: 58px;
+  background-color:#FFFFFF;
+  color: #0099FF;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 3px;
+  padding: 15px 32px 15px;
+  letter-spacing: 1px;
+}
+
+.leftside button:hover {
+  cursor: pointer;
+  background-color: #0099FF;
+  border: 1px white solid;
+  color: white;
+  transition-duration: 0.5s;
 }
 
 .landing-img {
-  padding: 120px 0;
+  display: inline-block;
+  align-self: center;
+  height: auto;
+  max-width: 100%;
+  width: auto;
 }
 
 .homepage-logo {
   height: 80px;
+}
+
+.login-container {
+  display: block;
+  max-width: 50%;
+  margin: 0px auto 0px auto;
+  padding: 60px 100px 40px;
+  width: 512px;
+  text-align: center;
+}
+
+.login {
+  text-align: left
+}
+
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]) {
+  border-color: #0099FF;
+  box-shadow: none;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readyonly]) {
+  border:none;
+  box-shadow: none;
 }
