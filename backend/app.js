@@ -9,6 +9,8 @@ var usersRouter = require('./routes/users');
 var notesRouter = require('./routes/notes');
 var noteBooksRouter = require('./routes/noteBooks');
 var noteTagsRouter = require('./routes/noteTags');
+const session = require('express-session');
+const passport = require('passport');
 
 var app = express();
 
@@ -20,8 +22,21 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//setup passport before real routes to pretect unauthorized access.
+app.use(
+  session({
+    secret: 'never give up',
+    resave: false,
+    saveUninitialized: true
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
+//setup routes for backend
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/notes', notesRouter);

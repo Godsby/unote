@@ -5,8 +5,8 @@ CREATE DATABASE unote;
 
 CREATE TABLE users (
    user_id SERIAL PRIMARY KEY,
-   email VARCHAR NOT NULL,
-   passcode VARCHAR NOT NULL 
+   email VARCHAR NOT NULL UNIQUE,
+   password_digest VARCHAR NOT NULL 
 );
 
 CREATE TABLE noteBooks (

@@ -6,8 +6,8 @@ let users = [];
 
 for(let i = 0; i < 20; i ++) {
    let email = faker.internet.email();
-   let passcode = faker.internet.password();
-   let str = `('${email}', '${passcode}')`;
+   let password_digest = faker.internet.password();
+   let str = `('${email}', '${password_digest}')`;
    users.push(str);
 }
 
@@ -55,7 +55,7 @@ noteBooks = noteBooks.join(', ');
 noteTags = noteTags.join(', ');
 
 
-db.none('INSERT INTO users(email, passcode) VALUES ' + users + ';')
+db.none('INSERT INTO users(email, password_digest) VALUES ' + users + ';')
    .then(() => {
       db.none('INSERT INTO noteBooks(bookName, user_id) VALUES ' + noteBooks + ';')
          .then(() => {
