@@ -6,12 +6,14 @@ import Signup from './Signup';
 import { loginUser, logoutUser, signupUser } from '../../store/actions/authActions';
 
 class AuthContainer extends React.Component {
+  
   render() {
+    console.log(this.props)
     return (
       <>
         <Switch>
-          <Route path='/auth/login' component={Login} />
-          <Route path='/auth/signup' component={Signup} />
+          <Route path='/login' render={() => <Login loginUser={this.props.loginUser}/>} />
+          <Route path='/signup' component={Signup} />
         </Switch>
       </>
     )
@@ -27,9 +29,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: user => {dispatch(loginUser(user))},
-    logout: () => {dispatch(logoutUser())},
-    signup: user => {dispatch(signupUser(user))},
+    loginUser: user => {dispatch(loginUser(user))},
+    logoutUser: () => {dispatch(logoutUser())},
+    // signup: user => {dispatch(signupUser(user))},
   }
 }
 

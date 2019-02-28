@@ -3,11 +3,10 @@ import './App.css';
 import axios from 'axios';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Landing from './components/Homepage/Landing';
-import Login from './components/Auth/Login';
-import Signup from './components/Auth/Signup';
+import AuthContainer from './components/auth/AuthContainer';
 import Main from './components/Mainpage/Main';
 import CreateNote from './components/Mainpage/CreateNote';
-import AuthContainer from './components/Auth/AuthContainer';
+import { connect } from 'react-redux';
 
 
 class App extends Component {
@@ -22,14 +21,15 @@ class App extends Component {
   }
 
   componentDidMount () {
-   this.fetchData('users');
-   this.fetchData('notes');
-   this.fetchData('noteBooks');
-   this.fetchData('noteTags');
+   this.fetchData('/users');
+   this.fetchData('/notes');
+   this.fetchData('/noteBooks');
+   this.fetchData('/noteTags');
   }
 
   fetchData = async (route) => {
     let res = await axios.get(`${route}`);
+    console.log(res)
     this.setState({
       [route]: Object.values(res.data)[1]
     })
@@ -42,7 +42,7 @@ class App extends Component {
         <Switch>
           <div className="App">
             <Route exact path='/' component={ Landing } />
-            <Route path='/auth' component={ AuthContainer } />
+            <Route path='/' component={ AuthContainer } />
             <Route exact path='/main' component={ Main } />
             <Route path='/new' component={ CreateNote } />
           </div>
@@ -53,4 +53,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = () => {
+  
+}
+
+export default connect()(App);

@@ -4,7 +4,7 @@ const { createUser, logoutUser, loginUser, isLoggedIn } = require('../db/queries
 const passport = require('../auth/local');
 const { loginRequired } = require('../auth/helpers');
 
-router.post('/create', createUser);
+router.post('/new', createUser);
 router.post('/login', passport.authenticate('local', {}), loginUser);
 router.get('/isLoggedIn', isLoggedIn);
 router.post('/logout', loginRequired, logoutUser);
