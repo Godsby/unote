@@ -1,5 +1,5 @@
 const pgp = require('pg-promise')({});
 
-const db = pgp('postgres://localhost/unote');
+const db = pgp(process.env.DATABASE_URL || 'postgres://localhost/unote');
 
 module.exports = { db };
