@@ -1,10 +1,9 @@
 import React from 'react';
-import axios from 'axios';
 
 class Signup extends React.Component {
   state = {
     email: '',
-    passcode: ''
+    password: ''
   }
 
   handleChange = e => {
@@ -15,11 +14,7 @@ class Signup extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    axios.post('/users', this.state)
-    .then(res => { 
-
-      console.log('res', res)
-    })
+    this.props.signupUser(this.state);
   }
 
   render () {
@@ -34,8 +29,8 @@ class Signup extends React.Component {
           </div>
 
           <div className='login input-field'>
-            <label htmlFor='passcode'>Password</label>
-            <input type='password' id='passcode' onChange={this.handleChange} />
+            <label htmlFor='password'>Password</label>
+            <input type='password' id='password' onChange={this.handleChange} />
           </div>
 
           <div className='login-button'>

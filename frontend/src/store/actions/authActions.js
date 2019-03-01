@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//Login actions
 const loginUser = user => dispatch => {
   axios.post('/users/login', user)
   .then(res => {
@@ -23,6 +24,7 @@ const loginSuccess = user => {
   };
 };
 
+//Logout actions
 const logoutUser = user => dispatch => {
   axios.post('/users/logout', user)
   .then(res => dispatch(logoutSuccess(res.data)))
@@ -36,18 +38,19 @@ const logoutSuccess = () => {
   };
 };
 
-const signupError = user => {
+//Signup action, successful signup automaticly call loginUser funcation
+const signupUser = user => dispatch => {
+  console.log('signup user called')
+  axios.post('/users/new', user)
+  .then(res => dispatch(loginUser(user)))
+  .catch(err => dispatch(signupError(err)))
+}
+
+const signupError = () => {
   return { 
-    type: 'SIGNUP_ERROR', 
-    payload: user 
+    type: 'SIGNUP_ERROR' 
   };
 };
 
-const signupSuccess = user => {
-  return {
-    type: 'SIGNUP_SUCCESS',
-    payload: user
-  };
-};
 
-export { loginUser, logoutUser, signupError, signupSuccess };
+export { loginUser, logoutUser, signupUser };

@@ -10,7 +10,9 @@ const createUser = (req, res, next) => {
    })
    .then(() => {
       res.status(200).json({
-         message: 'Registration successful!'
+         message: 'Registration successful!',
+         email: req.body.email,
+         password: hash
       });
    })
    .catch(err => {
@@ -22,7 +24,7 @@ const createUser = (req, res, next) => {
 
 const logoutUser = (req, res, next) => {
    req.logout();
-   res.status(200).json({
+   res.status(200).json({  
       message:'Log out success'
    });
 }

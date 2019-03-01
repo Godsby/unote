@@ -3,17 +3,23 @@ import { connect } from "react-redux";
 import { Switch, Route } from 'react-router-dom';
 import Login from './Login';
 import Signup from './Signup';
-import { loginUser, logoutUser, signupUser } from '../../store/actions/authActions';
+import { loginUser, signupUser } from '../../store/actions/authActions';
+import { Redirect } from 'react-router-dom';
 
 class AuthContainer extends React.Component {
   
   render() {
-    console.log(this.props)
+    const auth = this.props.auth;
+    if(auth.isLoggedIn) {
+      return (
+        <Redirect to='/main' />
+      )
+    } 
     return (
       <>
         <Switch>
-          <Route path='/login' render={() => <Login loginUser={this.props.loginUser}/>} />
-          <Route path='/signup' component={Signup} />
+          <Route path='/users/login' render={() => <Login loginUser={this.props.loginUser}/>} />
+          <Route path='/users/signup' render={() => <Signup signupUser={this.props.signupUser} />} />
         </Switch>
       </>
     )
@@ -21,7 +27,6 @@ class AuthContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     auth: state.auth
   }
@@ -30,8 +35,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     loginUser: user => {dispatch(loginUser(user))},
-    logoutUser: () => {dispatch(logoutUser())},
-    // signup: user => {dispatch(signupUser(user))},
+    signupUser: user => {dispatch(signupUser(user))}
   }
 }
 

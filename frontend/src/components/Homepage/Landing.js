@@ -1,6 +1,7 @@
 import React from 'react';
 import landingPic from '../Sample-pic.png';
 import Navbar from './Navbar';
+// import AuthContainer from '../auth/AuthContainer';
 
 const Landing = () => {
   return (
