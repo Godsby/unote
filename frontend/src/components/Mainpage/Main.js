@@ -3,8 +3,8 @@ import Sidebar from './Sidebar';
 import Editor from './Editor';
 import NoteList from './NoteList';
 
+const Main = (props) => {
 
-const Main = () => {
   return (
     <>
       <p>This is Main page</p>
@@ -14,4 +14,5 @@ const Main = () => {
     </>
   )
 }
+
 export default Main;

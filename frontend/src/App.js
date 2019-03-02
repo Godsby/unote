@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-// import axios from 'axios';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Landing from './components/Homepage/Landing';
 import AuthContainer from './components/auth/AuthContainer';
 import Main from './components/Mainpage/Main';
-import CreateNote from './components/Mainpage/CreateNote';
+import PrivateRoute from './components/PrivateRoute';
+import { connect } from 'react-redux';
+import { checkisLoggedIn } from './store/actions/authActions';
 
 class App extends Component {
+
 
 
   render() {
@@ -17,8 +19,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={ Landing } />
             <Route path='/users' component={ AuthContainer } />
-            <Route exact path='/main' component={ Main } />
-            <Route path='/new' component={ CreateNote } />
+            <PrivateRoute exact path='/main' component={ Main } />
           </Switch>
         </BrowserRouter>
       </div>
@@ -26,4 +27,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    checkisLoggedIn: () => {dispatch(checkisLoggedIn())}
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);

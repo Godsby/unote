@@ -4,37 +4,48 @@ import axios from "axios";
 const loginUser = user => dispatch => {
   axios.post('/users/login', user)
   .then(res => {
-    dispatch(loginSuccess(res.data))
+    dispatch(receiveUserSuccess({ 
+      user: res.data, 
+      message: 'Login success'
+    }))
   })
   .catch(err => {
-    dispatch(loginError(err))
+    dispatch(receiveUserError(err))
   })
 }
 
-const loginError = () => {
+const receiveUserError = () => {
   return { 
-    type: 'LOGIN_ERROR'
+    type: 'RECEIVEUSER_ERROR'
   };
 };
 
-const loginSuccess = user => {
+const receiveUserSuccess = payload => {
   return {
-    type: 'LOGIN_SUCCESS',
-    user
+    type: 'RECEIVEUSER_SUCCESS',
+    payload
   };
 };
+
+//Check if there is user login
+const checkisLoggedIn = user => dispatch => {
+  axios.get('/users/isLoggedIn')
+  .then(res => {
+    dispatch(receiveUserSuccess(res.data))
+  })
+  .catch(err => dispatch(receiveUserError(err)))
+}
 
 //Logout actions
-const logoutUser = user => dispatch => {
-  axios.post('/users/logout', user)
-  .then(res => dispatch(logoutSuccess(res.data)))
+const logoutUser = () => dispatch => {
+  axios.post('/users/logout')
+  .then(res => dispatch(logoutSuccess()))
   .catch(err => console.log(err))
 }
 
 const logoutSuccess = () => {
   return { 
-    type: 'LOGOUT_SUCCESS', 
-    user: {}   
+    type: 'LOGOUT_SUCCESS'
   };
 };
 
@@ -43,14 +54,8 @@ const signupUser = user => dispatch => {
   console.log('signup user called')
   axios.post('/users/new', user)
   .then(res => dispatch(loginUser(user)))
-  .catch(err => dispatch(signupError(err)))
+  .catch(err => dispatch(receiveUserError(err)))
 }
 
-const signupError = () => {
-  return { 
-    type: 'SIGNUP_ERROR' 
-  };
-};
 
-
-export { loginUser, logoutUser, signupUser };
+export { loginUser, checkisLoggedIn, logoutUser, signupUser };

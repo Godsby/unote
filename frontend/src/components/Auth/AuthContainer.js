@@ -9,8 +9,9 @@ import { Redirect } from 'react-router-dom';
 class AuthContainer extends React.Component {
   
   render() {
-    const auth = this.props.auth;
-    if(auth.isLoggedIn) {
+
+    const { isLoggedIn } = this.props.auth;
+    if( isLoggedIn ) {
       return (
         <Redirect to='/main' />
       )

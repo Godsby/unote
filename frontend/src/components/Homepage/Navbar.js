@@ -12,7 +12,8 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const auth = this.props.auth;
+    const { isLoggedIn } = this.props.auth;
+
     return (
       <nav className='nav-wrapper white z-depth-0'>
         <a className='homepage-logo-container left' href='/' >
@@ -20,7 +21,7 @@ class Navbar extends React.Component {
         </a>
   
         <ul className='right'>
-          { auth.isLoggedIn
+          { isLoggedIn
             ? <li><NavLink onClick={this.handleLogout} className='blue-text' to='/'>Log Out</NavLink></li> 
             : <>
                 <li><NavLink className='blue-text' to='/users/signup'>Sign Up</NavLink></li>
