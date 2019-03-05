@@ -1,8 +1,7 @@
 import React from 'react';
 import Sidebar from './Sidebar';
-import CreateNote from './CreateNote';
+import EditNote from './EditNote';
 import NoteList from './NoteList';
-import { getAllNotes } from '../../store/actions/noteActions'
 
 
 const Main = () => {
@@ -11,7 +10,7 @@ const Main = () => {
     <div className='mainpage-container'>
       <Sidebar />
       <NoteList />
-      <CreateNote />
+      <EditNote />
     </div>
   )
 }

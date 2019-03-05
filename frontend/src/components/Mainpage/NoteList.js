@@ -11,12 +11,12 @@ class NoteList extends React.Component {
 
   render() {
 
-    const notes = this.props.note.note;
+    const notes = this.props.notes.notes;
     // console.log(props)
     const noteList = notes.length ? (
       notes.map(note => {
         return (
-          <div className='post card z-depth-0' key={note.id}>
+          <div className='post card z-depth-0' key={note.note_id}>
             <div className='card-content'>
               <Link to={'/' + note.id}>
                 <span className='card-title'>{note.title}</span>
@@ -40,7 +40,7 @@ class NoteList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    note: state.note
+    notes: state.notes
   }
 }
 

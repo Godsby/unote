@@ -15,7 +15,11 @@ const getAllNotes = (req, res, next) => {
 }
 
 const createNote = (req, res, next) => {
-   db.none('INSERT INTO notes(title, body, user_id) VALUES(${title}, ${body}, ${user_id})', req.body)
+   db.none('INSERT INTO notes(title, body, user_id) VALUES(${title}, ${body}, ${user_id})', { 
+      user_id: req.user.user_id, 
+      ...req.body 
+   })
+
    .then(() => {
       res.status(200).json({
          status: 'success',

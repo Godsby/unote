@@ -1,5 +1,5 @@
 const initState = {
-  note: [],
+  notes: [],
   notebook: []
 };
 
@@ -9,22 +9,27 @@ const noteReducer = (state = initState, action) => {
     console.log(action.payload.notes)
     return {
       notebook: [...state.notebook],
-      note: [...action.payload.notes]
+      notes: [...action.payload.notes]
     }
     case 'CREATENOTE':
     return {
       ...state,
-      note: [...state.note, action.payload.note]
+      notes: [...state.notes, action.payload]
     }
     case 'EDITNOTE':
     return {
       ...state,
-      note: [...state.note, action.payload.note]
+      notes: [...state.notes, action.payload]
     }
     case 'DELETENOTE':
     return {
       ...state,
-      note: action.payload.note
+      notes: action.payload
+    }
+    case 'HANDLENOTE_ERROR':
+    return {
+      ...state,
+      message: action.payload
     }
     default:
     return state;
