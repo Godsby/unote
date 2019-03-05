@@ -1,17 +1,18 @@
 import React from 'react';
 import Sidebar from './Sidebar';
-import Editor from './Editor';
+import CreateNote from './CreateNote';
 import NoteList from './NoteList';
+import { getAllNotes } from '../../store/actions/noteActions'
 
-const Main = (props) => {
+
+const Main = () => {
 
   return (
-    <>
-      <p>This is Main page</p>
+    <div className='mainpage-container'>
       <Sidebar />
       <NoteList />
-      <Editor />
-    </>
+      <CreateNote />
+    </div>
   )
 }
 

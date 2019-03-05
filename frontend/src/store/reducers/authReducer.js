@@ -8,7 +8,7 @@ const authReducer = (state = initState, action) => {
 
   switch (action.type) {
     case 'RECEIVEUSER_ERROR':
-      console.log('Login error');
+      console.log('Login error', action);
       return {
         ...state,
         message: action.payload.message

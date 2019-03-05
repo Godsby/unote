@@ -1,12 +1,14 @@
 const { db } = require('../index');
 
 const getAllNotes = (req, res, next) => {
-   db.any('SELECT * FROM notes')
+   // let user_id = parseInt(req.params.id);
+   let user_id = req.user.user_id
+   db.any('SELECT * FROM notes Where user_id=$1', user_id)
    .then(notes => {
       res.status(200).json({
          status: 'success',
          notes: notes,
-         message: 'Received All Notes!'
+         message: 'Received All Notes for the LoggedUser!'
       })
    })
    .catch(err => next(err));

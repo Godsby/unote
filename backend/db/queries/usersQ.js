@@ -37,7 +37,7 @@ const isLoggedIn = (req, res) => {
    if(req.user) {
       res.json({email: req.user});
    } else {
-      res.status(401).json({
+      res.status(200).json({
          err: 'Nobody loggged in'
       });
    }

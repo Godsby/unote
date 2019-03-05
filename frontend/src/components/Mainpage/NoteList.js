@@ -1,15 +1,53 @@
 import React from 'react';
-import Note from './CreateNote';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getAllNotes } from '../../store/actions/noteActions';
 
+class NoteList extends React.Component {
 
+  componentDidMount() {
+    this.props.getAllNotes();
+  }
 
-const NoteList = () => {
-  return (
-    <>
-      <h1>This is a notelist.</h1>
-      <Note />
+  render() {
 
-    </>
-  )
+    const notes = this.props.note.note;
+    // console.log(props)
+    const noteList = notes.length ? (
+      notes.map(note => {
+        return (
+          <div className='post card z-depth-0' key={note.id}>
+            <div className='card-content'>
+              <Link to={'/' + note.id}>
+                <span className='card-title'>{note.title}</span>
+              </Link>
+              <p>{note.body}</p>
+            </div>
+          </div>
+        )
+      })
+    ) : (<div className='center'>No notes yet!</div>)
+  
+    return (
+      <div className='noteList-container'>
+        {/* <button onClick={props.getAllNotes}>Get Notes</button> */}
+        <p className='left'>All Notes</p>
+        {noteList}
+      </div>
+    )
+  }
 }
-export default NoteList;
+
+const mapStateToProps = state => {
+  return {
+    note: state.note
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllNotes: id => {dispatch(getAllNotes(id))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NoteList);

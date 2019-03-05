@@ -14,9 +14,10 @@ const loginUser = user => dispatch => {
   })
 }
 
-const receiveUserError = () => {
+const receiveUserError = payload => {
   return { 
-    type: 'RECEIVEUSER_ERROR'
+    type: 'RECEIVEUSER_ERROR',
+    payload
   };
 };
 
@@ -31,7 +32,12 @@ const receiveUserSuccess = payload => {
 const checkisLoggedIn = user => dispatch => {
   axios.get('/users/isLoggedIn')
   .then(res => {
-    dispatch(receiveUserSuccess(res.data))
+    // console.log(res)
+    if (res.data.err) {
+      dispatch(receiveUserError(res.data.err))
+    } else {
+      dispatch(receiveUserSuccess(res.data))
+    }
   })
   .catch(err => dispatch(receiveUserError(err)))
 }

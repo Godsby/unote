@@ -1,4 +1,5 @@
 import React from 'react';
+// import Quill from 'quill';
 
 class CreateNote extends React.Component {
   state = {
@@ -27,6 +28,7 @@ class CreateNote extends React.Component {
             <label htmlFor='content'>Content:</label>
             <textarea className='materialize-textarea' id='content' onChange={this.handleChange} />
           </div>
+
         </form>
       </div>
     )

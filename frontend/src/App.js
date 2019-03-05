@@ -10,7 +10,9 @@ import { checkisLoggedIn } from './store/actions/authActions';
 
 class App extends Component {
 
-
+componentDidMount() {
+  this.props.checkisLoggedIn();
+}
 
   render() {
     return (
