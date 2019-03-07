@@ -1,4 +1,6 @@
 import React from 'react';
+import logo from '../../components/Unote-logo.png';
+import { NavLink } from 'react-router-dom';
 
 class Signup extends React.Component {
   state = {
@@ -20,6 +22,11 @@ class Signup extends React.Component {
   render () {
     return (
       <div className='login-container card'>
+
+        <a className='logo-container' href='/' >
+          <img className='homepage-logo' src={logo} alt='' />
+        </a>
+
         <h5>Remember everything meaningful.</h5>
 
         <form onSubmit={this.handleSubmit}>
@@ -37,6 +44,9 @@ class Signup extends React.Component {
             <button className='btn blue lighten-1 z-depth-0'>Signup</button>
           </div>
         </form>
+
+        <div className='switch-explaination'>Already have an account?</div>
+        <div><NavLink className='blue-text' to='/users/login'>Log in</NavLink></div>
 
       </div>
     )

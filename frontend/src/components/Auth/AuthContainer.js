@@ -17,12 +17,12 @@ class AuthContainer extends React.Component {
       )
     } 
     return (
-      <>
+      <div className='container right'>
         <Switch>
           <Route path='/users/login' render={() => <Login loginUser={this.props.loginUser}/>} />
           <Route path='/users/signup' render={() => <Signup signupUser={this.props.signupUser} />} />
         </Switch>
-      </>
+      </div>
     )
   }
 }

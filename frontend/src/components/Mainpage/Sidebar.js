@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   return (
     <div className="sidebar-container">
 
@@ -22,29 +21,29 @@ const Sidebar = () => {
       </div>
 
       <nav className='nav-wrapper z-depth-0'>
-        <div className='newNote-link'>
+        <div className='newNote-link' onClick={props.newNoteClick}>
           <img className='newNote-logo' src='' alt='' />
           <NavLink to='/main'>New Note</NavLink>
         </div>
 
         <div className='allNotes-link'>
           <img className='allNotes-log' src='' alt='' />
-          <NavLink to='/new'>All Notes</NavLink>
+          <NavLink to='/main'>All Notes</NavLink>
         </div>
 
         <div className='noteBooks-link'>
           <img className='notebook-log' src='' alt='' />
-          <NavLink to='/new'>Notebooks</NavLink>
+          <NavLink to='/notebooks'>Notebooks</NavLink>
         </div>
 
         <div className='allTags-link'>
           <img className='tag-log' src='' alt='' />
-          <NavLink to='/new'>Tags</NavLink>
+          <NavLink to='/tags'>Tags</NavLink>
         </div>
 
         <div className='trash-link'>
           <img className='trash-log' src='' alt='' />
-          <NavLink to='/new'>Trashs</NavLink>
+          <NavLink to='/trash'>Trashs</NavLink>
         </div>
 
       </nav>
@@ -54,4 +53,4 @@ const Sidebar = () => {
 
 
 
-export default connect()(Sidebar);
+export default Sidebar;

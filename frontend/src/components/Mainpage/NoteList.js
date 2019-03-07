@@ -23,8 +23,7 @@ class NoteList extends React.Component {
           <div 
             className='post card z-depth-0' 
             key={note.note_id} 
-            data-note_id={note.note_id} 
-            >
+            data-note_id={note.note_id}>
             <div 
               className='list card-content' 
               onClick={this.handleSelectNote}
@@ -38,11 +37,13 @@ class NoteList extends React.Component {
     ) : (<div className='center'>No notes yet!</div>)
   
     return (
-      <div className='noteList-container'>
-        
+      <div className='middle-part'>
         <p className='left'>All Notes</p>
+        <div className='noteList-container'>
+          
+          {noteList} 
 
-        {noteList} 
+        </div>
 
       </div>
     )
