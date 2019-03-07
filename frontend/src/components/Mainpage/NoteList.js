@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getAllNotes, selectNote } from '../../store/actions/noteActions';
+import { getAllNotes, selectNote, editNote} from '../../store/actions/noteActions';
 
 class NoteList extends React.Component {
 
@@ -10,7 +10,7 @@ class NoteList extends React.Component {
 
   handleSelectNote = e => {
     const notes = this.props.notes.notes;
-    let selectedNote = notes.find(note => note.note_id === parseInt(e.target.id));
+    let selectedNote = notes.find(note => note.note_id === parseInt(e.target.dataset.note_id));
     this.props.selectNote(selectedNote);
   }
 
@@ -20,13 +20,17 @@ class NoteList extends React.Component {
     const noteList = notes.length ? (
       notes.map(note => {
         return (
-          <div className='post card z-depth-0' key={note.note_id}>
+          <div 
+            className='post card z-depth-0' 
+            key={note.note_id} 
+            data-note_id={note.note_id} 
+            >
             <div 
               className='list card-content' 
               onClick={this.handleSelectNote}
-              id={note.note_id}>
-              <span className='card-title'>{note.title}</span>
-              <p>{note.body}</p>
+              data-note_id={note.note_id}>
+              <span className='card-title' data-note_id={note.note_id}>{note.title}</span>
+              <p data-note_id={note.note_id}>{note.body}</p>
             </div>
           </div>
         )
@@ -54,7 +58,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getAllNotes: id => {dispatch(getAllNotes(id))},
-    selectNote: note =>{dispatch(selectNote(note))}
+    selectNote: note =>{dispatch(selectNote(note))},
+    editNote: note => { dispatch(editNote(note))}
   }
 }
 

@@ -1,3 +1,8 @@
+body {
+  position: fixed;
+  overflow: hidden;
+}
+
 .App {
   margin: 0;
   padding: 0;
@@ -17,11 +22,11 @@
 
 .landing-content {
   display: inline-flex;
-  margin: 0 0;
   background-color: #0099FF;
   font-family: Helvetica,Arial,sans-serif;
   height: 617px;
   box-sizing: border-box;
+  /* overflow-y: auto; */
 }
 
 .leftside {
@@ -103,10 +108,11 @@ textarea.materialize-textarea:focus:not([readyonly]) {
   margin: 0 0;
   display: grid;
   grid-template-columns: 241px 346px auto;
-  /* position: fixed; */
+  position: fixed;
+  overflow: hidden;
   width: 100%;
   min-height: 100%;
-  height: 600px
+  height: 100%
 }
 
 .sidebar-container {
@@ -162,9 +168,14 @@ textarea.materialize-textarea:focus:not([readyonly]) {
 }
 
 .editor-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   margin-left: 20px;
+  padding-right: 20px;
   height: 54px;
   border-bottom: 1px solid grey;
+  margin-bottom: 30px;
 }
 
 .editor-footer {

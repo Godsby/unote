@@ -24,7 +24,7 @@ const Sidebar = () => {
       <nav className='nav-wrapper z-depth-0'>
         <div className='newNote-link'>
           <img className='newNote-logo' src='' alt='' />
-          <NavLink to='/new'>New Note</NavLink>
+          <NavLink to='/main'>New Note</NavLink>
         </div>
 
         <div className='allNotes-link'>

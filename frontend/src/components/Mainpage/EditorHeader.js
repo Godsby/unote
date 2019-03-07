@@ -1,9 +1,13 @@
 import React from 'react';
 
-const EditorHeader = () => {
+const EditorHeader = (props) => {
   return (
     <div className='editor-header'>
-      This is editorheader
+      <button
+        className='btn pink lighten-1 z-depth-0'
+        type='submit'
+        value='Delete'
+        disabled={!props.title}>Delete</button>
     </div>
   )
 }

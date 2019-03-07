@@ -23,12 +23,11 @@ const noteReducer = (state = initState, action) => {
       selectedNote: action.payload
     }
     case 'EDITNOTE':
-
     return {
       ...state,
-      notes: [...state.notes, action.payload],
+      selectedNote: action.payload,
+      notes: [...state.notes, action.payload]
     }
-    
     case 'DELETENOTE':
     return {
       ...state,

@@ -32,14 +32,14 @@ const createNote = (req, res, next) => {
 const editNote = (req, res, next) => {
    let queryString = '';
    if (req.body.title && req.body.body) {
-      queryString += 'UPDATE notes SET title = ${title}, body = ${body} WHERE id = ${id} '
+      queryString += 'UPDATE notes SET title = ${title}, body = ${body} WHERE note_id = ${note_id} '
    } else if (req.body.title) {
-      queryString += 'UPDATE notes SET title = ${title} WHERE id = ${id}'
+      queryString += 'UPDATE notes SET title = ${title} WHERE note_id = ${note_id}'
    } else {
-      queryString += 'UPDATE notes SET body = ${body} WHERE id = ${id}'
+      queryString += 'UPDATE notes SET body = ${body} WHERE note_id = ${note_id}'
    }
    db.none(queryString, {
-      id: parseInt(req.params.id),
+      note_id: parseInt(req.params.id),
       title: req.body.title,
       body: req.body.body
    })

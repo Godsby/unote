@@ -8,7 +8,8 @@ import EditorFooter from './EditorFooter';
 class EditNote extends React.Component {
   state = {
     title: '',
-    body: ''
+    body: '',
+    note_id: null
   }
 
   handleChange = e => {
@@ -19,16 +20,24 @@ class EditNote extends React.Component {
   
   handleSubmit = e => {
     e.preventDefault();
-    this.props.createNote(this.state);
-    // this.props.editNote(this.state);
-    // this.props.deleteNote(this.state);
+    const { selectedNote } = this.props;
+    if (!Object.keys(selectedNote).length) {
+      this.props.createNote(this.state);
+      this.setState({
+        title: '',
+        body: ''
+      })
+    } else {
+      this.props.editNote(this.state);
+    }
   }
 
   componentDidUpdate (prevProps) {
     if (prevProps.selectedNote !== this.props.selectedNote) {
       this.setState({
         title: this.props.selectedNote.title,
-        body: this.props.selectedNote.body
+        body: this.props.selectedNote.body,
+        note_id: this.props.selectedNote.note_id
       })
     }
   }
@@ -36,7 +45,7 @@ class EditNote extends React.Component {
   render() {
     return (
       <div className='editor-container'>
-        <EditorHeader />
+        <EditorHeader title={this.state.title}/>
         <div className='editor'>
           <form onSubmit={this.handleSubmit}>
             <div className='note-input'>
@@ -59,7 +68,8 @@ class EditNote extends React.Component {
             <input 
               className='btn blue lighten-1 z-depth-0' 
               type='submit' 
-              value='submit'/>
+              value='Save'
+              disabled={!this.state.title}/>
           </form>
         </div>
         <EditorFooter />
@@ -68,17 +78,18 @@ class EditNote extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     notes: state.notes,
-    selectedNote: state.notes.selectedNote
+    selectedNote: state.notes.selectedNote,
+    path: ownProps.path
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     createNote: note => { dispatch(createNote(note))},
-    editNote: (id, note) => { dispatch(editNote(id, note))},
+    editNote: note => { dispatch(editNote(note))},
     deleteNote: id => { dispatch(deleteNote(id))},
     
   }

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const EditorFooter = () => {
+const EditorFooter = (props) => {
   return (
     <div  className='editor-footer'>
-      This is EditorFooter
+    This is EditorFooter.
     </div>
 
   )

@@ -21,7 +21,7 @@ CREATE TABLE noteTags (
 );
 
 CREATE TABLE notes (
-   note_id SERIAL PRIMARY KEY,
+   note_id SERIAL PRIMARY KEY UNIQUE,
    title TEXT NOT NULL,
    body TEXT NOT NULL,
    user_id INT REFERENCES users(user_id),
