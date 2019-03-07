@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { getAllNotes } from '../../store/actions/noteActions';
+import { getAllNotes, selectNote } from '../../store/actions/noteActions';
 
 class NoteList extends React.Component {
 
@@ -9,18 +8,24 @@ class NoteList extends React.Component {
     this.props.getAllNotes();
   }
 
+  handleSelectNote = e => {
+    const notes = this.props.notes.notes;
+    let selectedNote = notes.find(note => note.note_id === parseInt(e.target.id));
+    this.props.selectNote(selectedNote);
+  }
+
   render() {
 
     const notes = this.props.notes.notes;
-    // console.log(props)
     const noteList = notes.length ? (
       notes.map(note => {
         return (
           <div className='post card z-depth-0' key={note.note_id}>
-            <div className='card-content'>
-              <Link to={'/' + note.id}>
-                <span className='card-title'>{note.title}</span>
-              </Link>
+            <div 
+              className='list card-content' 
+              onClick={this.handleSelectNote}
+              id={note.note_id}>
+              <span className='card-title'>{note.title}</span>
               <p>{note.body}</p>
             </div>
           </div>
@@ -30,9 +35,11 @@ class NoteList extends React.Component {
   
     return (
       <div className='noteList-container'>
-        {/* <button onClick={props.getAllNotes}>Get Notes</button> */}
+        
         <p className='left'>All Notes</p>
-        {noteList}
+
+        {noteList} 
+
       </div>
     )
   }
@@ -46,7 +53,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllNotes: id => {dispatch(getAllNotes(id))}
+    getAllNotes: id => {dispatch(getAllNotes(id))},
+    selectNote: note =>{dispatch(selectNote(note))}
   }
 }
 

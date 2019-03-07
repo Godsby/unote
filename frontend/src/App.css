@@ -106,25 +106,23 @@ textarea.materialize-textarea:focus:not([readyonly]) {
   /* position: fixed; */
   width: 100%;
   min-height: 100%;
-  height: 100%;
+  height: 600px
 }
 
 .sidebar-container {
   background-color: #0099FF;
   color: white;
-  height: 100%;
 }
 
 .noteList-container {
   display: flex;
   flex-direction: column;
   color: #000000;
-  overflow: auto;
-  background-color: #F8F8F8
+  background-color: #F8F8F8;
+  overflow-y: scroll;
 }
 
 .post {
-  overflow: auto;
   background-color: #F8F8F8;
   border-top: 1px solid #F2F2F2;
   border-right: 1px solid #F2F2F2;
@@ -156,7 +154,24 @@ textarea.materialize-textarea:focus:not([readyonly]) {
 }
 
 .editor-container {
-  padding-left: 40px;
-  overflow: auto;
-  height: 100%;
+  overflow: scroll;
+}
+
+.editor {
+  margin-left: 40px;
+}
+
+.editor-header {
+  margin-left: 20px;
+  height: 54px;
+  border-bottom: 1px solid grey;
+}
+
+.editor-footer {
+  padding-left: 0px;
+  height: 54px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  border-top: 1px solid grey;
 }

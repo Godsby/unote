@@ -1,14 +1,15 @@
 const initState = {
   notes: [],
-  notebook: []
+  notebook: [],
+  selectedNote: {}
 };
 
 const noteReducer = (state = initState, action) => {
   switch(action.type) {
     case 'GETALLNOTES':
-    console.log(action.payload.notes)
+    // console.log(action.payload.notes)
     return {
-      notebook: [...state.notebook],
+      ...state,
       notes: [...action.payload.notes]
     }
     case 'CREATENOTE':
@@ -16,11 +17,18 @@ const noteReducer = (state = initState, action) => {
       ...state,
       notes: [...state.notes, action.payload]
     }
-    case 'EDITNOTE':
+    case 'SELECTNOTE':
     return {
       ...state,
-      notes: [...state.notes, action.payload]
+      selectedNote: action.payload
     }
+    case 'EDITNOTE':
+
+    return {
+      ...state,
+      notes: [...state.notes, action.payload],
+    }
+    
     case 'DELETENOTE':
     return {
       ...state,

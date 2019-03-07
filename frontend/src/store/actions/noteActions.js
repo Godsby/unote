@@ -27,9 +27,16 @@ export const createNote = note => dispatch => {
   })
 }
 
-export const editNote = (id, note) => dispatch => {
+export const selectNote = note => {
+  return {
+    type: 'SELECTNOTE',
+    payload: note
+  }
+}
+
+export const editNote = note => dispatch => {
   console.log('EditNote Called')
-  axios.patch(`/notes/${id}`, note)
+  axios.patch(`/notes/${note.note_id}`, note)
   .then(() => {
     dispatch({
       type: 'EDITNOTE',
