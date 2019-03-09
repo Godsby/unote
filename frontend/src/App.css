@@ -125,8 +125,13 @@ textarea.materialize-textarea:focus:not([readyonly]) {
 }
 
 .sidebar-container {
-  background-color: #0099FF;
+  background-color: #1A1A1A;
   color: white;
+}
+
+.fa-plus-circle {
+  color:#0099FF;
+  background-color: #F2F2F2
 }
 
 .middle-part {
@@ -177,7 +182,7 @@ textarea.materialize-textarea:focus:not([readyonly]) {
 }
 
 .nav-wrapper {
-  background-color:#0099FF;
+  background-color: #1A1A1A;
 }
 
 .nav-wrapper > div {

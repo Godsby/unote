@@ -24,6 +24,7 @@ CREATE TABLE notes (
    note_id SERIAL PRIMARY KEY UNIQUE,
    title TEXT NOT NULL,
    body TEXT NOT NULL,
+   createdBy TIMESTAMP DEFAULT now(),
    user_id INT REFERENCES users(user_id),
    noteBook_id INT REFERENCES noteBooks(noteBook_id),
    noteTag_id INT REFERENCES noteTags(noteTag_id)

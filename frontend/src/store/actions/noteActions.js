@@ -13,10 +13,10 @@ export const getAllNotes = id => dispatch => {
 export const createNote = note => dispatch => {
   console.log('CreateNote Called')
   axios.post(`/notes/new`, note)
-  .then(() => {
+  .then(res => {
     dispatch({
       type: 'CREATENOTE',
-      payload: note
+      payload: res.data.note
     })
   })
   .catch(err => {
@@ -35,12 +35,13 @@ export const selectNote = note => {
 }
 
 export const editNote = note => dispatch => {
-  console.log('EditNote Called')
+  // console.log('EditNote Called')
   axios.patch(`/notes/${note.note_id}`, note)
-  .then(() => {
+  .then(res => {
+    console.log(res.data)
     dispatch({
       type: 'EDITNOTE',
-      payload: note
+      payload: res.data.note
     })
   })
   .catch(err => {
@@ -53,7 +54,7 @@ export const editNote = note => dispatch => {
 
 export const deleteNote = id => dispatch => {
   console.log('DeleteNote Called')
-  axios.patch(`/notes/${id}`)
+  axios.delete(`/notes/${id}`)
   .then(() => {
     dispatch({
       type: 'DELETENOTE'

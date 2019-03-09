@@ -19,13 +19,14 @@ let notes = [];
 for (let i = 0; i < 50; i++) {
    let title = faker.lorem.sentence();
    let body = faker.lorem.paragraphs();
+
    let user_id = Math.floor(Math.random() * 20 + 1);
    let noteBook_id = Math.floor(Math.random() * 10 + 1);
    let noteTag_id = Math.floor(Math.random() * 20 + 1);
    let str = `('${title}', '${body}', ${user_id}, ${noteBook_id},${noteTag_id})`;
    notes.push(str);
 }
-// console.log('Notes', notes);
+console.log('Notes', notes);
 
 let noteBooks = [];
 

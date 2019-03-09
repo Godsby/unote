@@ -32,6 +32,13 @@ class EditNote extends React.Component {
     }
   }
 
+  handleDelete = e => {
+    const { selectedNote } = this.props;
+    if (selectedNote.note_id) {
+      this.props.deleteNote(selectedNote.note_id);
+    }
+  }
+
   componentDidUpdate (prevProps) {
     if (prevProps.selectedNote !== this.props.selectedNote) {
       this.setState({
@@ -45,7 +52,7 @@ class EditNote extends React.Component {
   render() {
     return (
       <div className='editor-container'>
-        <EditorHeader title={this.state.title}/>
+        <EditorHeader note_id={this.state.note_id} handleDelete={this.handleDelete}/>
         <div className='editor'>
           <form onSubmit={this.handleSubmit}>
             <div className='note-input'>

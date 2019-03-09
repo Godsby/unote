@@ -22,7 +22,7 @@ const Sidebar = (props) => {
 
       <nav className='nav-wrapper z-depth-0'>
         <div className='newNote-link' onClick={props.newNoteClick}>
-          <img className='newNote-logo' src='' alt='' />
+          <i class="fas fa-plus-circle"></i>
           <NavLink to='/main'>New Note</NavLink>
         </div>
 

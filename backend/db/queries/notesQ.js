@@ -3,7 +3,7 @@ const { db } = require('../index');
 const getAllNotes = (req, res, next) => {
    // let user_id = parseInt(req.params.id);
    let user_id = req.user.user_id
-   db.any('SELECT * FROM notes Where user_id=$1', user_id)
+   db.any('SELECT * FROM notes WHERE user_id=$1 ORDER BY createdby DESC', user_id)
    .then(notes => {
       res.status(200).json({
          status: 'success',
@@ -15,14 +15,15 @@ const getAllNotes = (req, res, next) => {
 }
 
 const createNote = (req, res, next) => {
-   db.none('INSERT INTO notes(title, body, user_id) VALUES(${title}, ${body}, ${user_id})', { 
+   db.one('INSERT INTO notes(title, body, user_id) VALUES(${title}, ${body}, ${user_id}) RETURNING *', { 
       user_id: req.user.user_id, 
       ...req.body 
    })
 
-   .then(() => {
+   .then(data => {
       res.status(200).json({
          status: 'success',
+         note: data,
          message: 'New Note Created!'
       })
    })
@@ -30,22 +31,23 @@ const createNote = (req, res, next) => {
 }
 
 const editNote = (req, res, next) => {
-   let queryString = '';
-   if (req.body.title && req.body.body) {
-      queryString += 'UPDATE notes SET title = ${title}, body = ${body} WHERE note_id = ${note_id} '
-   } else if (req.body.title) {
-      queryString += 'UPDATE notes SET title = ${title} WHERE note_id = ${note_id}'
-   } else {
-      queryString += 'UPDATE notes SET body = ${body} WHERE note_id = ${note_id}'
-   }
-   db.none(queryString, {
+   // let queryString = '';
+   // if (req.body.title && req.body.body) {
+   //    queryString += 'UPDATE notes SET title = ${title}, body = ${body} WHERE note_id = ${note_id} '
+   // } else if (req.body.title) {
+   //    queryString += 'UPDATE notes SET title = ${title} WHERE note_id = ${note_id}'
+   // } else {
+   //    queryString += 'UPDATE notes SET body = ${body} WHERE note_id = ${note_id}'
+   // }
+   db.one('UPDATE notes SET title = ${ title }, body = ${ body } WHERE note_id = ${ note_id } RETURNING *', {
       note_id: parseInt(req.params.id),
       title: req.body.title,
       body: req.body.body
    })
-   .then(() => {
+   .then(data => {
       res.status(200).json({
          status: 'success',
+         note: data,
          message: 'Note Updated!'
       })
    })
@@ -54,7 +56,7 @@ const editNote = (req, res, next) => {
 
 const deleteNote = (req, res, next) => {
    let note_id = parseInt(req.params.id);
-   db.none('DELETE FROM notes WHERE id=$1', note_id)
+   db.none('DELETE FROM notes WHERE note_id=$1', note_id)
    .then(() => {
       res.status(200).json({
          status: 'success',
