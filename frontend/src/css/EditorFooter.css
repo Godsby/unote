@@ -1,0 +1,32 @@
+.editor-footer {
+  padding-left: 0px;
+  height: 54px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  border-top: 1px solid grey;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  margin-left: 20px;
+  margin-top: 10px
+}
+
+.footer > span {
+  padding-left: 20px;
+}
+
+input:not([type]),
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+  background-color: transparent;
+  border-bottom: none;
+  border-radius: 0;
+  outline: none;
+  height: 30px;
+  width: 100%;
+  box-shadow: none;
+  transition: none
+}

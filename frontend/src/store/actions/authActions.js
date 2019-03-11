@@ -32,11 +32,11 @@ const receiveUserSuccess = payload => {
 const checkisLoggedIn = user => dispatch => {
   axios.get('/users/isLoggedIn')
   .then(res => {
-    // console.log(res)
+    console.log(res.data)
     if (res.data.err) {
       dispatch(receiveUserError(res.data.err))
     } else {
-      dispatch(receiveUserSuccess(res.data))
+      dispatch(receiveUserSuccess(res.data.email))
     }
   })
   .catch(err => dispatch(receiveUserError(err)))

@@ -2,19 +2,32 @@ import React from 'react';
 import '../../css/Sidebar.css';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import allNoteSVG from '../svg/allNotes';
+import Avatar from 'react-avatar';
 
 const Sidebar = (props) => {
-
+  console.log(props)
+  let userEmail = props.auth.user.email;
+  let firstLetter = userEmail.slice(0, 1);
   return (
     <div className="sidebar-container">
 
       <div className="userProfile-container">
         {/* show userAvatar and email */}
-        <div className='userAvatar'>
-          <span>This is userlogo</span>
-          <div>{props.auth.isLoggedIn}</div>
-        </div>
+        < Avatar 
+          color = { Avatar.getRandomColor('sitebase', ['white', 'pink', 'orange'])}
+          name = {firstLetter} 
+          size = "28"
+          round = { true }
+        />
+        <span>{userEmail}</span>
+        < svg xmlns = "http://www.w3.org/2000/svg"
+          width = "8"
+          height = "8"
+          viewBox = "0 0 8 8"
+          stroke= '#a6a6a6'>
+          <path fill = "white" d = "M7 2L4 5 1 2" ></path>
+        </svg >
+
         {/* listening onClick above to show a dropdown tab */}
         <div className='userProfile'>
           <ul>
@@ -35,10 +48,16 @@ const Sidebar = (props) => {
 
       </div>
 
-      <div className="search-container center">
-        <form>
-          <input type="text" placeholder="Search all notes..." name="search"/>
-        </form>
+      <div className="search-container">
+        < input className = "search"
+        placeholder = "Search all notes…"
+        type = "text"
+        value = ""
+        browser-default='true'/>
+        < svg width = "32" height = "32" viewBox = "0 0 32 32">
+          < path fill = "currentColor" d = "M23.394 23.394a.95.95 0 0 1-1.343 0l-3.52-3.519a6.352 6.352 0 0 1-3.792 1.255 6.391 6.391 0 1 1 6.391-6.39c0 1.421-.47 2.73-1.255 3.792l3.52 3.519a.95.95 0 0 1 0 1.343zM9.965 14.713a4.748 4.748 0 1 0 9.496 0 4.748 4.748 0 0 0-9.496 0z" > 
+          </path>
+        </svg > 
       </div>
 
       <nav className='nav-wrapper z-depth-0'>
@@ -99,7 +118,8 @@ const Sidebar = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.auth
+    auth: state.auth,
+    notes: state.notes
   }
 }
 
