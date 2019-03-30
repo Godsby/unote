@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/Sidebar.css';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Avatar from 'react-avatar';
 

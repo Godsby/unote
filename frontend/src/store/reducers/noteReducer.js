@@ -1,4 +1,4 @@
-import { selectNote } from "../actions/noteActions";
+// import { selectNote } from "../actions/noteActions";
 
 const initState = {
   notes: [],

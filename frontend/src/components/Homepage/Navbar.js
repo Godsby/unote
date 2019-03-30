@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../components/Unote-logo.png';
+import logo from '../img/Unote-logo.png';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../store/actions/authActions';
 import { NavLink } from 'react-router-dom';
